@@ -18,12 +18,21 @@ public class Player : MonoBehaviour
 	private void Awake()
 	{
 		modelStartPosition = transform.position;
+		Lean.Touch.LeanTouch.OnFingerUpdate += GestureHandler;
 	}
 
 	private void Update()
 	{
 		UpdateYPosition();
 		UpdateZPosition();
+	}
+
+	private void GestureHandler(Lean.Touch.LeanFinger gestureData)
+	{
+		Vector3 currentPosition = transform.position;
+
+		currentPosition.x += gestureData.SwipeScreenDelta.x * xMoveSpeed * Time.deltaTime;
+		transform.position = currentPosition;
 	}
 
 	private void UpdateZPosition()
