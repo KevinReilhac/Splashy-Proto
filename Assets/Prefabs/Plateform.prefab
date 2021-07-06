@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2109998717937181401}
   - component: {fileID: 3133671306429684999}
   - component: {fileID: 1892312781454363593}
-  - component: {fileID: 2734090674165414439}
+  - component: {fileID: -7510594490108609090}
+  - component: {fileID: 738930053346469117}
   m_Layer: 0
   m_Name: Plateform
   m_TagString: Untagged
@@ -83,20 +84,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2734090674165414439
-CapsuleCollider:
+--- !u!114 &-7510594490108609090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7578196248957651545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af30b44a77c05034482a5eef1781477b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchedAnimationDuration: 1
+  touchedYPos: -10
+  canBeTouched: 1
+--- !u!65 &738930053346469117
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7578196248957651545}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 9.222002, z: 1.0000002}
+  m_Center: {x: 0.000000060852116, y: 3.6109998, z: -0.000000091278174}
 --- !u!1 &8492588469795810246
 GameObject:
   m_ObjectHideFlags: 0

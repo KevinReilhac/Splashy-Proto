@@ -14,17 +14,34 @@ public class Player : MonoBehaviour
 	[SerializeField] private float xMoveSpeed = 3f;
 
 	private Vector3 modelStartPosition = Vector3.zero;
+	private bool asStart = false;
+	private float time = 0f;
 
 	private void Awake()
 	{
 		modelStartPosition = transform.position;
 		Lean.Touch.LeanTouch.OnFingerUpdate += GestureHandler;
+		Lean.Touch.LeanTouch.OnFingerDown += StartPlay;
+	}
+
+	private void OnDestroy()
+	{
+		Lean.Touch.LeanTouch.OnFingerUpdate -= GestureHandler;
+	}
+
+	private void StartPlay(Lean.Touch.LeanFinger touchData)
+	{
+		asStart = true;
+		Lean.Touch.LeanTouch.OnFingerDown -= StartPlay;
 	}
 
 	private void Update()
 	{
-		UpdateYPosition();
-		UpdateZPosition();
+		if (asStart)
+		{
+			UpdateYPosition();
+			UpdateZPosition();
+		}
 	}
 
 	private void GestureHandler(Lean.Touch.LeanFinger gestureData)
@@ -45,9 +62,10 @@ public class Player : MonoBehaviour
 
 	private void UpdateYPosition()
 	{
+		time += Time.deltaTime;
 		Vector3 currentPosition = playerModel.transform.position;
 
-		currentPosition.y = modelStartPosition.y + Mathf.Abs(Mathf.Sin(Time.time * ySpeed) * yAmplitude);
+		currentPosition.y = modelStartPosition.y + Mathf.Abs(Mathf.Sin(time * ySpeed) * yAmplitude);
 		playerModel.transform.position = currentPosition;
 	}
 }
